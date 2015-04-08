@@ -5,6 +5,7 @@ import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.persistence.ShouldMatchDataSet;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -25,7 +26,6 @@ import si.mougli.geekseek.domain.persistence.test.integration.PersistenceDeploym
 import static si.mougli.geekseek.domain.conference.test.TestUtils.toDate;
 
 /**
- *
  * @author mougli
  */
 @Transactional(TransactionMode.COMMIT)
@@ -43,11 +43,7 @@ public class ConferenceTestCase
     @Deployment
     public static WebArchive deploy()
     {
-        return ShrinkWrap.create(WebArchive.class)
-                .addAsLibraries(ConferenceDeployments.conference().addClasses(ConferenceTestCase.class, TestUtils.class)
-                        .addAsManifestResource(new StringAsset(PersistenceDeployments.descriptor().exportAsString()), "persistence.xml")
-                        .addAsManifestResource(new File("src/main/resources/META-INF/beans.xml")))
-                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
+        return ShrinkWrap.create(WebArchive.class).addAsLibraries(ConferenceDeployments.conference().addClasses(ConferenceTestCase.class, TestUtils.class).addAsManifestResource(new StringAsset(PersistenceDeployments.descriptor().exportAsString()), "persistence.xml").addAsManifestResource(new File("src/main/resources/META-INF/beans.xml"))).addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     public void createdEventFired(@Observes @Created Conference conference)
@@ -62,7 +58,7 @@ public class ConferenceTestCase
 
     // Story: As a User I should be able to create a Conference
     @Test
-//    @ShouldMatchDataSet(value = "conference.yml", excludeColumns = "*id")
+    @ShouldMatchDataSet(value = "conference.yml", excludeColumns = "*id")
     public void shouldBeAbleToCreateConference()
     {
         Conference conference = createConference();

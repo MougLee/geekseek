@@ -10,7 +10,11 @@
     <artifactId>geekseek-domain-parent</artifactId>
     <name>GeekSeek Domain: Parent</name>
     <packaging>pom</packaging>
-    <modules></modules>
+    <modules>
+	<module>core</module>
+	<module>persistence</module>
+	<module>conference</module>
+    </modules>
     
     <properties>
         <version.arquillian_persistence>1.0.0.Alpha6</version.arquillian_persistence>

@@ -29,7 +29,6 @@ import si.mougli.geekseek.domain.persistence.model.BaseEntity;
 @Entity
 public class Conference extends BaseEntity
 {
-
     private static final long serialVersionUID = 1L;
 
     private String name;
@@ -65,7 +64,7 @@ public class Conference extends BaseEntity
 
     public Conference setName(@NotNull String name)
     {
-//        requireNonNull(name, "Name must be specified)");
+        // requireNonNull(name, "Name must be specified)");
         this.name = name;
         return this;
     }
@@ -77,14 +76,14 @@ public class Conference extends BaseEntity
 
     public Conference setTagLine(@NotNull String tagLine)
     {
-//        requireNonNull(tagLine, "TagLine must be specified");
+        // requireNonNull(tagLine, "TagLine must be specified");
         this.tagLine = tagLine;
         return this;
     }
 
     public Conference setDuration(@NotNull Duration duration)
     {
-//        requireNonNull(duration, "Duration must be specified");
+        // requireNonNull(duration, "Duration must be specified");
         this.duration = duration;
         return this;
     }
@@ -105,7 +104,7 @@ public class Conference extends BaseEntity
 
     public Conference addSession(@NotNull Session session)
     {
-//        requireNonNull(session, "Session must be specified");
+        // requireNonNull(session, "Session must be specified");
         if (sessions == null)
         {
             this.sessions = new HashSet<Session>();
