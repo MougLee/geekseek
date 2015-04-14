@@ -2,8 +2,8 @@ package si.mougli.geekseek.domain.persistence;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import si.mougli.geekseek.domain.core.Repository;
-import si.mougli.geekseek.domain.core.model.Identifiable;
+import si.mougli.geekseek.domain.Repository;
+import si.mougli.geekseek.domain.model.Identifiable;
 
 public abstract class PersistenceRepository<T extends Identifiable> implements Repository<T>
 {

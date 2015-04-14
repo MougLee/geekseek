@@ -97,7 +97,7 @@ public class Conference extends BaseEntity
     {
         if (sessions == null)
         {
-            this.sessions = new HashSet<Session>();
+            this.sessions = new HashSet<>();
         }
         return Collections.unmodifiableSet(sessions);
     }
@@ -107,7 +107,7 @@ public class Conference extends BaseEntity
         // requireNonNull(session, "Session must be specified");
         if (sessions == null)
         {
-            this.sessions = new HashSet<Session>();
+            this.sessions = new HashSet<>();
         }
         sessions.add(session);
         session.setConference(this);

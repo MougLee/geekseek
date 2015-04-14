@@ -1,11 +1,12 @@
-package si.mougli.geekseek.domain.core;
+package si.mougli.geekseek.domain;
 
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
 import javax.enterprise.event.Event;
 import javax.enterprise.inject.Any;
 import javax.inject.Inject;
-import si.mougli.geekseek.domain.core.model.Identifiable;
+
+import si.mougli.geekseek.domain.model.Identifiable;
 
 @Decorator
 public abstract class EventRepositoryDecorator<T extends Identifiable> implements Repository<T>

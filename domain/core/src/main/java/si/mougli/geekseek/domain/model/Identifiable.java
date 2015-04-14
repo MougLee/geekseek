@@ -1,10 +1,9 @@
-package si.mougli.geekseek.domain.core.model;
+package si.mougli.geekseek.domain.model;
 
-public interface Identifiable {
-
+public interface Identifiable
+{
     /**
      * @return The primary key, or ID, of this entity
      */
     String getId();
-
 }

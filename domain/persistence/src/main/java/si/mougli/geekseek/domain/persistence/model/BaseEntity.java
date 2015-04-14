@@ -8,9 +8,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import si.mougli.geekseek.domain.core.model.Identifiable;
+import si.mougli.geekseek.domain.model.Identifiable;
 
-import si.mougli.geekseek.domain.core.model.Timestampable;
+import si.mougli.geekseek.domain.model.Timestampable;
 
 @MappedSuperclass
 public abstract class BaseEntity implements Identifiable, Timestampable, Serializable

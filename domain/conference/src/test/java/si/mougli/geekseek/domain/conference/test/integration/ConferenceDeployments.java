@@ -3,9 +3,9 @@ package si.mougli.geekseek.domain.conference.test.integration;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import si.mougli.geekseek.domain.conference.ConferenceRepository;
 import si.mougli.geekseek.domain.conference.model.Conference;
-import si.mougli.geekseek.domain.core.test.integration.CoreDeployments;
 import si.mougli.geekseek.domain.persistence.PersistenceRepository;
 import si.mougli.geekseek.domain.persistence.model.BaseEntity;
+import si.mougli.geekseek.domain.test.integration.CoreDeployments;
 
 public class ConferenceDeployments
 {

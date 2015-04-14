@@ -1,10 +1,10 @@
-package si.mougli.geekseek.domain.core.test.integration;
+package si.mougli.geekseek.domain.test.integration;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import si.mougli.geekseek.domain.core.Repository;
-import si.mougli.geekseek.domain.core.model.Identifiable;
+import si.mougli.geekseek.domain.Repository;
+import si.mougli.geekseek.domain.model.Identifiable;
 
 /**
  *

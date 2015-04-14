@@ -1,4 +1,4 @@
-package si.mougli.geekseek.domain.core.model;
+package si.mougli.geekseek.domain.model;
 
 import java.util.Date;
 

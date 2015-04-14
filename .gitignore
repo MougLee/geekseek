@@ -1,0 +1,5 @@
+/domain/core/target/
+/target/
+/domain/target/
+/domain/persistence/target/
+/domain/conference/target/

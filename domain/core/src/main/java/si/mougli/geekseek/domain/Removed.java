@@ -1,4 +1,4 @@
-package si.mougli.geekseek.domain.core;
+package si.mougli.geekseek.domain;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,9 +11,9 @@ import javax.inject.Qualifier;
 @Qualifier
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Created {
+public @interface Removed {
 
-    public static class Literal extends AnnotationLiteral<Created> {
+    public static class Literal extends AnnotationLiteral<Removed> {
         private static final long serialVersionUID = 1L;
     }
 }

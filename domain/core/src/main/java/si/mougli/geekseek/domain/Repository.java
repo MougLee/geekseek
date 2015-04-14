@@ -1,6 +1,6 @@
-package si.mougli.geekseek.domain.core;
+package si.mougli.geekseek.domain;
 
-import si.mougli.geekseek.domain.core.model.Identifiable;
+import si.mougli.geekseek.domain.model.Identifiable;
 
 public interface Repository<T extends Identifiable>
 {

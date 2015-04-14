@@ -2,7 +2,6 @@ package si.mougli.geekseek.domain.conference.test;
 
 import java.util.Calendar;
 import java.util.Date;
-
 import si.mougli.geekseek.domain.conference.model.Conference;
 import si.mougli.geekseek.domain.conference.model.Duration;
 import si.mougli.geekseek.domain.conference.model.Session;
@@ -44,14 +43,7 @@ public final class TestUtils
     public static Session createSession()
     {
         final String title = "Testing the Enterprise layers - The A, B, C’s of integration testing";
-        final String description = "For years we’ve been exploring how to layer and separate our code to test"
-                + " in isolation on the unit level. We’ve kept integration and functional testing as a big ball of mud;"
-                + " jumping straight from unit to full system testing. But can we apply some of the same lessons"
-                + " learned from unit to integration testing?\\n\\nThis session explore the different technologies "
-                + " within the Java Enterprise specification and see how our application can be tested in isolation;"
-                + " layer for layer, module for module and component for component.\\n\\nCan we isolate and stay real"
-                + " at the same time? Does mocks, stubs and test doubles have a place in the world of integration testing? "
-                + " Are there other lessons to be learned?";
+        final String description = "For years we’ve been exploring how to layer and separate our code to test in isolation on the unit level. We’ve kept integration and functional testing as a big ball of mud; jumping straight from unit to full system testing. But can we apply some of the same lessons learned from unit to integration testing?\\n\\nThis session explore the different technologies within the Java Enterprise specification and see how our application can be tested in isolation; layer for layer, module for module and component for component.\\n\\nCan we isolate and stay real at the same time? Does mocks, stubs and test doubles have a place in the world of integration testing? Are there other lessons to be learned?";
 
         final Duration duration = new Duration(toDate(2014, 11, 11, 15, 00), toDate(2014, 11, 11, 16, 00));
 
