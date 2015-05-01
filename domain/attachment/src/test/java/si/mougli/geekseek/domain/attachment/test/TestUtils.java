@@ -1,4 +1,4 @@
-package si.medius.geekseek.domain.attachment.test;
+package si.mougli.geekseek.domain.attachment.test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,7 +15,8 @@ public final class TestUtils
         try
         {
             return new Attachment("Test Attachment", "text/plain", new URL("http://geekseek.org"));
-        } catch (MalformedURLException e)
+        }
+        catch (MalformedURLException e)
         {
             throw new RuntimeException(e);
         }

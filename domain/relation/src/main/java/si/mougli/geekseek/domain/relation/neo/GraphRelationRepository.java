@@ -1,4 +1,4 @@
-package org.cedj.geekseek.domain.relation.neo;
+package si.mougli.geekseek.domain.relation.neo;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -11,10 +11,6 @@ import javax.enterprise.context.spi.CreationalContext;
 import javax.enterprise.inject.spi.Bean;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
-import org.cedj.geekseek.domain.Repository;
-import org.cedj.geekseek.domain.model.Identifiable;
-import org.cedj.geekseek.domain.relation.RelationRepository;
-import org.cedj.geekseek.domain.relation.model.Relation;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
@@ -22,6 +18,10 @@ import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.index.Index;
 import org.neo4j.graphdb.index.UniqueFactory;
+import si.mougli.geekseek.domain.Repository;
+import si.mougli.geekseek.domain.model.Identifiable;
+import si.mougli.geekseek.domain.relation.RelationRepository;
+import si.mougli.geekseek.domain.relation.model.Relation;
 
 @ApplicationScoped
 public class GraphRelationRepository implements RelationRepository
@@ -39,8 +39,10 @@ public class GraphRelationRepository implements RelationRepository
     @Inject
     private BeanManager manager;
 
-    /* (non-Javadoc)
-     * @see si.mougli.geekseek.domain.relation.RelationRepositoryTe#add(si.mougli.geekseek.domain.model.Identifiable, java.lang.String, si.mougli.geekseek.domain.model.Identifiable)
+    /*
+     * (non-Javadoc)
+     * @see si.mougli.geekseek.domain.relation.RelationRepositoryTe#add(si.mougli.geekseek.domain.model.Identifiable,
+     * java.lang.String, si.mougli.geekseek.domain.model.Identifiable)
      */
     @Override
     public Relation add(Identifiable source, final String type, Identifiable target)
@@ -65,12 +67,13 @@ public class GraphRelationRepository implements RelationRepository
             getOrCreateRelationship(sourceNode, targetNode, Named.relation(type));
 
             tx.success();
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             tx.failure();
-            throw new RuntimeException(
-                    "Could not add relation of type " + type + " between " + source + " and " + target, e);
-        } finally
+            throw new RuntimeException("Could not add relation of type " + type + " between " + source + " and " + target, e);
+        }
+        finally
         {
             tx.finish();
         }
@@ -99,19 +102,23 @@ public class GraphRelationRepository implements RelationRepository
             }
 
             tx.success();
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             tx.failure();
-            throw new RuntimeException(
-                    "Could not add relation of type " + type + " between " + source + " and " + target, e);
-        } finally
+            throw new RuntimeException("Could not add relation of type " + type + " between " + source + " and " + target, e);
+        }
+        finally
         {
             tx.finish();
         }
     }
 
-    /* (non-Javadoc)
-     * @see org.cedj.geekseek.domain.relation.RelationRepositoryTe#findTargets(org.cedj.geekseek.domain.model.Identifiable, java.lang.String, java.lang.Class)
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.cedj.geekseek.domain.relation.RelationRepositoryTe#findTargets(org.cedj.geekseek.domain.model.Identifiable,
+     * java.lang.String, java.lang.Class)
      */
     @Override
     public <T extends Identifiable> List<T> findTargets(Identifiable source, final String type, final Class<T> targetType)
@@ -147,18 +154,20 @@ public class GraphRelationRepository implements RelationRepository
                     {
                         other.delete();
                     }
-                } else
+                }
+                else
                 {
                     targets.add(target);
                 }
             }
             tx.success();
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             tx.failure();
-            throw new RuntimeException(
-                    "Could not clean up relation of type " + type + " from " + source, e);
-        } finally
+            throw new RuntimeException("Could not clean up relation of type " + type + " from " + source, e);
+        }
+        finally
         {
             tx.finish();
         }
@@ -166,10 +175,8 @@ public class GraphRelationRepository implements RelationRepository
     }
 
     /**
-     * Helper method that looks in the BeanManager for a Repository that match
-     * signature Repository<T>.
-     *
-     * Used to dynamically find repository to load targets from.
+     * Helper method that looks in the BeanManager for a Repository that match signature Repository<T>. Used to
+     * dynamically find repository to load targets from.
      *
      * @param targetType Repository object type to locate
      * @return Repository<T>
@@ -193,10 +200,7 @@ public class GraphRelationRepository implements RelationRepository
             @Override
             public Type[] getActualTypeArguments()
             {
-                return new Type[]
-                {
-                    targetType
-                };
+                return new Type[] { targetType };
             }
         };
 

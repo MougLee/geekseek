@@ -30,14 +30,7 @@ public class UserRepositoryTransactionalTestCase extends BaseTransactionalSpecif
     @Deployment
     public static WebArchive deploy()
     {
-        return ShrinkWrap.create(WebArchive.class)
-                .addAsLibraries(
-                        UserDeployments.user()
-                        .addAsManifestResource(new StringAsset(
-                                        PersistenceDeployments.descriptor().exportAsString()), "persistence.xml")
-                        .addAsManifestResource(new File("src/main/resources/META-INF/beans.xml")))
-                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-                .addClass(BaseTransactionalSpecification.class);
+        return ShrinkWrap.create(WebArchive.class).addAsLibraries(UserDeployments.user().addAsManifestResource(new StringAsset(PersistenceDeployments.descriptor().exportAsString()), "persistence.xml").addAsManifestResource(new File("src/main/resources/META-INF/beans.xml"))).addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml").addClass(BaseTransactionalSpecification.class);
     }
 
     @Inject

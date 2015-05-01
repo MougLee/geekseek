@@ -43,8 +43,7 @@ public abstract class BaseTransactionalSpecification<DOMAIN extends Identifiable
     protected abstract DOMAIN updateDomainObject(DOMAIN domain);
 
     /**
-     * Validate that the update change has occurred. Expecting Assert error when
-     * validation does not match.
+     * Validate that the update change has occurred. Expecting Assert error when validation does not match.
      */
     protected abstract void validateUpdatedDomainObject(DOMAIN domain);
 
@@ -56,9 +55,7 @@ public abstract class BaseTransactionalSpecification<DOMAIN extends Identifiable
         commit(Void.class, new Store(domain));
 
         DOMAIN stored = commit(new Get(domain.getId()));
-        Assert.assertNotNull(
-                "Object should be stored when transaction is committed",
-                stored);
+        Assert.assertNotNull("Object should be stored when transaction is committed", stored);
     }
 
     @Test
@@ -85,9 +82,7 @@ public abstract class BaseTransactionalSpecification<DOMAIN extends Identifiable
         commit(Void.class, new Remove(domain));
 
         DOMAIN stored = commit(new Get(domain.getId()));
-        Assert.assertNull(
-                "Object should be removed when transaction is committed",
-                stored);
+        Assert.assertNull("Object should be removed when transaction is committed", stored);
     }
 
     @Test
@@ -98,9 +93,7 @@ public abstract class BaseTransactionalSpecification<DOMAIN extends Identifiable
         rollback(Void.class, new Store(domain));
 
         DOMAIN stored = commit(getDomainClass(), new Get(domain.getId()));
-        Assert.assertNull(
-                "Object should not be stored when transaction is rolled back",
-                stored);
+        Assert.assertNull("Object should not be stored when transaction is rolled back", stored);
     }
 
     @Test
@@ -119,7 +112,8 @@ public abstract class BaseTransactionalSpecification<DOMAIN extends Identifiable
         {
             validateUpdatedDomainObject(updated);
             Assert.fail("Object should not be updated when transaction is rolled back");
-        } catch (AssertionError error)
+        }
+        catch (AssertionError error)
         {
             // no-op, the updated object should not validate as a updated one
         }
@@ -134,9 +128,7 @@ public abstract class BaseTransactionalSpecification<DOMAIN extends Identifiable
         rollback(Void.class, new Remove(domain));
 
         DOMAIN stored = commit(new Get(domain.getId()));
-        Assert.assertNotNull(
-                "Object should not be removed when transaction is rolled back",
-                stored);
+        Assert.assertNotNull("Object should not be removed when transaction is rolled back", stored);
     }
 
     @Test
@@ -187,7 +179,8 @@ public abstract class BaseTransactionalSpecification<DOMAIN extends Identifiable
         {
             tx.begin();
             return callable.call();
-        } finally
+        }
+        finally
         {
             tx.commit();
         }
@@ -199,7 +192,8 @@ public abstract class BaseTransactionalSpecification<DOMAIN extends Identifiable
         {
             tx.begin();
             return callable.call();
-        } finally
+        }
+        finally
         {
             tx.rollback();
         }
